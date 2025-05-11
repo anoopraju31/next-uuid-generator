@@ -1,0 +1,3 @@
+.home__page {
+	@apply w-ful min-h-screen flex flex-col gap-8 lg:gap-12 bg-red-500;
+}
