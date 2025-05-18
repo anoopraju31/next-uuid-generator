@@ -10,15 +10,14 @@ const GenerateSingleUUID: FC = () => {
 
 	useEffect(() => {
 		if (!generateNewUuid) return
+
 		const newUuid = uuidv4()
+
 		setSingleUuid(newUuid)
 		setGenerateNewUuid(false)
 	}, [generateNewUuid])
 
-	const generateNewUuidClick = () => {
-		setGenerateNewUuid(true)
-	}
-
+	const generateNewUuidClick = () => setGenerateNewUuid(true)
 	const handleCopy = async () => {
 		try {
 			await navigator.clipboard.writeText(singleUuid)
