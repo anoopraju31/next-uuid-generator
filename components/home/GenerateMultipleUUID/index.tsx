@@ -49,6 +49,7 @@ const GenerateMultipleUUID: FC = () => {
 					placeholder='Enter the number of UUIDs you want to generate'
 					onChange={(e) => setCount(Number(e.target.value))}
 				/>
+
 				<button
 					onClick={() => setGenerateNewUuid(true)}
 					className='w-fit py-3 px-4 rounded-xl bg-white text-xl font-bold text-black'
