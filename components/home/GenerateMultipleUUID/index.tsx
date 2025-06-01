@@ -39,20 +39,22 @@ const GenerateMultipleUUID: FC = () => {
 	return (
 		<section className='w-full py-8 px-4 sm:px-6 md:px-8 lg:px-12 xl:xp-16 flex flex-col items-center gap-8 bg-black'>
 			<div className='w-full flex justify-center item-center'>
-				<h1 className='text-white text-3xl font-bold'> Generator Multiple V4 UUIDs </h1>
+				<h1 className='text-white text-center text-3xl font-bold'> Generator Multiple V4 UUIDs </h1>
 			</div>
 
 			<div className='w-full flex flex-col gap-6 items-center'>
 				<input
 					className='w-full py-3 px-4 rounded-xl bg-white text-xl font-bold text-black'
 					type='number'
+					min={1}
+					max={500}
 					placeholder='Enter the number of UUIDs you want to generate'
 					onChange={(e) => setCount(Number(e.target.value))}
 				/>
 
 				<button
 					onClick={() => setGenerateNewUuid(true)}
-					className='w-fit py-3 px-4 rounded-xl bg-white text-xl font-bold text-black'
+					className='w-full sm:w-fit py-3 px-4 rounded-xl bg-white text-xl font-bold text-black'
 				>
 					Generate
 				</button>
@@ -64,7 +66,7 @@ const GenerateMultipleUUID: FC = () => {
 						<button
 							disabled={copied[index]}
 							onClick={() => handleCopy(index)}
-							className='w-fit py-3 px-4 rounded-xl bg-white text-xl font-bold text-black disabled:opacity-60 disabled:cursor-not-allowed'
+							className='w-fit py-3 px-4 rounded-xl bg-white text-lg md:text-xl font-bold text-black disabled:opacity-60 disabled:cursor-not-allowed'
 						>
 							{uuid}
 						</button>
