@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type FC } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import UuidContainer from './UuidContainer'
 
 const GenerateMultipleUUID: FC = () => {
 	const [count, setCount] = useState<number>(0)
@@ -60,19 +61,7 @@ const GenerateMultipleUUID: FC = () => {
 				</button>
 			</div>
 
-			<div className='w-full grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-				{uuids.map((uuid, index) => (
-					<div key={uuid} className='flex flex-col gap-4 items-center'>
-						<button
-							disabled={copied[index]}
-							onClick={() => handleCopy(index)}
-							className='w-fit py-3 px-4 rounded-xl bg-white text-lg md:text-xl font-bold text-black disabled:opacity-60 disabled:cursor-not-allowed'
-						>
-							{uuid}
-						</button>
-					</div>
-				))}
-			</div>
+			<UuidContainer uuids={uuids} copied={copied} handleCopy={handleCopy} />
 		</section>
 	)
 }
