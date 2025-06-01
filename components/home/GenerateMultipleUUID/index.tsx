@@ -43,15 +43,21 @@ const GenerateMultipleUUID: FC = () => {
 				<h1 className='text-white text-center text-3xl font-bold'> Generator Multiple V4 UUIDs </h1>
 			</div>
 
-			<div className='w-full flex flex-col gap-6 items-center'>
-				<input
-					className='w-full py-3 px-4 rounded-xl bg-white text-xl font-bold text-black'
-					type='number'
-					min={1}
-					max={500}
-					placeholder='Enter the number of UUIDs you want to generate'
-					onChange={(e) => setCount(Number(e.target.value))}
-				/>
+			<div className='w-full flex flex-col sm:flex-row gap-6 items-end'>
+				<div className='w-full flex flex-col gap-3'>
+					<label htmlFor='count' className='text-white text-lg md:text-xl font-bold'>
+						Enter the number of UUIDs you want to generate
+					</label>
+					<input
+						className='w-full py-3 px-4 rounded-xl bg-white text-xl font-bold text-black'
+						type='number'
+						id='count'
+						min={1}
+						max={500}
+						placeholder='Enter a number'
+						onChange={(e) => setCount(Number(e.target.value))}
+					/>
+				</div>
 
 				<button
 					onClick={() => setGenerateNewUuid(true)}
