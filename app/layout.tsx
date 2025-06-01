@@ -22,10 +22,12 @@ type RootLayoutProps = Readonly<{
 	children: ReactNode
 }>
 
-export const RootLayout: FC<RootLayoutProps> = ({ children }) => {
+const RootLayout: FC<RootLayoutProps> = ({ children }) => {
 	return (
 		<html lang='en'>
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
 		</html>
 	)
 }
+
+export default RootLayout
