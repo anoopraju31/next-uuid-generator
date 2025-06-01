@@ -37,7 +37,7 @@ const GenerateMultipleUUID: FC = () => {
 	}
 
 	return (
-		<section className='w-full py-8 px-4 sm:px-6 md:px-8 lg:px-12 xl:xp-16 flex flex-col items-center gap-8 bg-black'>
+		<section className='w-full py-12 lg:py-16 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 flex flex-col items-center gap-8 bg-white/10'>
 			<div className='w-full flex justify-center item-center'>
 				<h1 className='text-white text-center text-3xl font-bold'> Generator Multiple V4 UUIDs </h1>
 			</div>
