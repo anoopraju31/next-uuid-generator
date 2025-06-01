@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import type { FC, ReactNode } from 'react'
 import { Geist, Geist_Mono } from 'next/font/google'
+import Footer from '@/components/Footer'
 import './globals.css'
 
 const geistSans = Geist({
@@ -25,7 +26,10 @@ type RootLayoutProps = Readonly<{
 const RootLayout: FC<RootLayoutProps> = ({ children }) => {
 	return (
 		<html lang='en'>
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+				{children}
+				<Footer />
+			</body>
 		</html>
 	)
 }

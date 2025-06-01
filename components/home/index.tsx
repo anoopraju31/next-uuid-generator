@@ -4,7 +4,7 @@ import GenerateMultipleUUID from './GenerateMultipleUUID'
 
 const Home: FC = () => {
 	return (
-		<main className='w-ful min-h-screen flex flex-col gap-8 lg:gap-12 font-mono'>
+		<main className='w-full flex flex-col gap-8 lg:gap-12 font-mono'>
 			<GenerateSingleUUID />
 			<GenerateMultipleUUID />
 		</main>
