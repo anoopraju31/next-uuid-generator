@@ -1,12 +1,16 @@
 'use client'
 
-import { useState, type FC } from 'react'
+import { useEffect, useState, type FC } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { toast } from 'sonner'
 
 const GenerateSingleUUID: FC = () => {
 	const [singleUuid, setSingleUuid] = useState<string>('')
 	const [copied, setCopied] = useState<boolean>(false)
+
+	useEffect(() => {
+		setSingleUuid(uuidv4())
+	}, [])
 
 	const generateNewUuidClick = () => {
 		try {
