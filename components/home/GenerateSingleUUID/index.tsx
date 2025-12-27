@@ -1,30 +1,32 @@
 'use client'
 
-import { useEffect, useState, type FC } from 'react'
+import { useState, type FC } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import { toast } from 'sonner'
 
 const GenerateSingleUUID: FC = () => {
-	const [singleUuid, setSingleUuid] = useState('')
-	const [copied, setCopied] = useState(false)
-	const [generateNewUuid, setGenerateNewUuid] = useState(true)
+	const [singleUuid, setSingleUuid] = useState<string>('')
+	const [copied, setCopied] = useState<boolean>(false)
 
-	useEffect(() => {
-		if (!generateNewUuid) return
+	const generateNewUuidClick = () => {
+		try {
+			const newUuid = uuidv4()
 
-		const newUuid = uuidv4()
+			setSingleUuid(newUuid)
+		} catch (error) {
+			console.error('Error generating UUID', error)
+			toast.error('Error generating UUID')
+		}
+	}
 
-		setSingleUuid(newUuid)
-		setGenerateNewUuid(false)
-	}, [generateNewUuid])
-
-	const generateNewUuidClick = () => setGenerateNewUuid(true)
 	const handleCopy = async () => {
 		try {
 			await navigator.clipboard.writeText(singleUuid)
 			setCopied(true)
-			setTimeout(() => setCopied(false), 2000) // Reset after 2 seconds
+			setTimeout(() => setCopied(false), 500) // Reset after 0.5 seconds
 		} catch (err) {
 			console.error('Failed to copy!', err)
+			toast.error('Failed to copy!')
 		}
 	}
 
@@ -43,8 +45,7 @@ const GenerateSingleUUID: FC = () => {
 						disabled={copied}
 						className='w-full md:w-fit py-3 md:py-6 px-4 md:px-6 rounded-xl bg-white text-lg md:text-xl font-bold text-black cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed'
 					>
-						{' '}
-						{singleUuid}{' '}
+						{singleUuid}
 					</button>
 
 					<button
