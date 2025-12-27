@@ -2,6 +2,7 @@
 
 import { FormEvent, useState, type FC } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import { toast } from 'sonner'
 
 import UuidContainer from './UuidContainer'
 
@@ -17,25 +18,34 @@ const GenerateMultipleUUID: FC = () => {
 			setCopied((prev) => prev.map((item, idx) => (idx === index ? true : item)))
 		} catch (err) {
 			console.error('Failed to copy!', err)
+			toast.error('Failed to copy!')
 		}
 	}
 
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault()
+		try {
+			e.preventDefault()
 
-		if (count <= 0 || count > 500) return
+			if (count <= 0 || count > 500) {
+				toast.error('Please enter a valid number between 1 and 500')
+				return
+			}
 
-		const newUuids: string[] = []
-		const newCopied: boolean[] = []
+			const newUuids: string[] = []
+			const newCopied: boolean[] = []
 
-		for (let i = 0; i < count; i++) {
-			const newUuid = uuidv4()
-			newUuids.push(newUuid)
-			newCopied.push(false)
+			for (let i = 0; i < count; i++) {
+				const newUuid = uuidv4()
+				newUuids.push(newUuid)
+				newCopied.push(false)
+			}
+
+			setUuids(newUuids)
+			setCopied(newCopied)
+		} catch (error) {
+			console.error('Error generating UUIDs', error)
+			toast.error('Error generating UUIDs')
 		}
-
-		setUuids(newUuids)
-		setCopied(newCopied)
 	}
 
 	return (
