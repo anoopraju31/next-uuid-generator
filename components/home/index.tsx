@@ -1,15 +1,15 @@
-import { type FC } from 'react'
+import { type FC } from 'react';
 
-import GenerateSingleUUID from './GenerateSingleUUID'
-import GenerateMultipleUUID from './GenerateMultipleUUID'
+import GenerateSingleUUID from './GenerateSingleUUID';
+import GenerateMultipleUUID from './GenerateMultipleUUID';
 
 const Home: FC = () => {
-	return (
-		<main className='w-full flex flex-col gap-8 lg:gap-12 font-mono'>
-			<GenerateSingleUUID />
-			<GenerateMultipleUUID />
-		</main>
-	)
-}
+  return (
+    <main className="flex w-full flex-col gap-8 font-mono lg:gap-12">
+      <GenerateSingleUUID />
+      <GenerateMultipleUUID />
+    </main>
+  );
+};
 
-export default Home
+export default Home;

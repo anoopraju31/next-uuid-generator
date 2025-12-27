@@ -1,9 +1,9 @@
-import { type FC } from 'react'
+import { type FC } from 'react';
 
-import Home from '@/components/home'
+import Home from '@/components/home';
 
 const HomePage: FC = () => {
-	return <Home />
-}
+  return <Home />;
+};
 
-export default HomePage
+export default HomePage;
