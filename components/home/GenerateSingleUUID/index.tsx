@@ -35,7 +35,7 @@ const GenerateSingleUUID: FC = () => {
   };
 
   return (
-    <section className="xl:xp-16 flex w-full flex-col items-center gap-8 bg-black px-4 py-16 sm:px-6 md:px-8 lg:px-12">
+    <section className="xl:xp-16 mx-auto flex w-full max-w-5xl flex-col items-center gap-8 bg-black px-4 py-16 sm:px-6 md:px-8">
       <div className="item-center flex w-full justify-center">
         <h1 className="text-center text-3xl font-bold text-white"> Online UUID Generator </h1>
       </div>
