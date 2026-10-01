@@ -7,11 +7,9 @@ import {
   CheckCircle2,
   XCircle,
   Clock,
-  ShieldAlert,
-  Sparkles,
   ClipboardPaste,
-  HelpCircle,
 } from 'lucide-react';
+
 import { inspectUuid, type UuidInspectionResult } from '../utils';
 
 const SAMPLE_UUIDS = [

@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { Copy, Check, Hash } from 'lucide-react';
+import { Copy, Check } from 'lucide-react';
 
 type Props = {
   uuids: string[];

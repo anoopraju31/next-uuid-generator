@@ -6,12 +6,9 @@ import {
   Copy,
   Check,
   RefreshCw,
-  Sparkles,
   Clock,
   Shield,
-  Layers,
   SlidersHorizontal,
-  ChevronDown,
 } from 'lucide-react';
 
 import {

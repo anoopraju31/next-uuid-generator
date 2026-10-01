@@ -6,8 +6,6 @@ import {
   Layers,
   SearchCode,
   BookOpen,
-  ShieldCheck,
-  Zap,
 } from 'lucide-react';
 
 import GenerateSingleUUID from './GenerateSingleUUID';

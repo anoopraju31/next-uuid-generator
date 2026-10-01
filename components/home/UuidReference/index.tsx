@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { Database, ShieldCheck, Zap, Layers, Binary, BookOpen } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
 
 const UuidReference: FC = () => {
   return (
@@ -72,7 +72,7 @@ const UuidReference: FC = () => {
         </p>
 
         <div className="mt-4 overflow-x-auto">
-          <div className="flex min-w-[500px] items-stretch gap-1.5 font-mono text-xs">
+          <div className="flex min-w-125 items-stretch gap-1.5 font-mono text-xs">
             <div className="flex-1 rounded-lg border border-indigo-500/30 bg-indigo-500/10 p-2.5 text-center">
               <div className="font-bold text-indigo-300">018f6f59</div>
               <div className="mt-1 text-[10px] text-slate-400">time_low (32 bits)</div>
