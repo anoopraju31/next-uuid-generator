@@ -8,7 +8,7 @@ const UuidReference: FC = () => {
       className="mx-auto w-full max-w-5xl rounded-3xl border border-slate-800/80 bg-slate-900/30 p-6 shadow-xl backdrop-blur-xl sm:p-8 lg:p-10"
     >
       <div className="flex items-center gap-2 border-b border-slate-800/80 pb-5">
-        <BookOpen className="h-5 w-5 text-indigo-400" />
+        <BookOpen aria-hidden="true" className="h-5 w-5 text-indigo-400" />
         <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl">UUID Standards & Specifications</h2>
       </div>
 
@@ -68,7 +68,12 @@ const UuidReference: FC = () => {
           A UUID is structured into 5 segments separated by hyphens (8-4-4-4-12 hex characters):
         </p>
 
-        <div className="mt-4 overflow-x-auto">
+        <div
+          tabIndex={0}
+          role="region"
+          aria-label="Anatomy of a Standard 128-Bit UUID visualizer"
+          className="mt-4 overflow-x-auto rounded-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500"
+        >
           <div className="flex min-w-125 items-stretch gap-1.5 font-mono text-xs">
             <div className="flex-1 rounded-lg border border-indigo-500/30 bg-indigo-500/10 p-2.5 text-center">
               <div className="font-bold text-indigo-300">018f6f59</div>

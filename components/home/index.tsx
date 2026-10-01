@@ -53,43 +53,47 @@ const Home: FC = () => {
         </p>
 
         {/* Quick Navigation Pills */}
-        <div className="mt-7 flex flex-wrap items-center justify-center gap-2">
+        <nav aria-label="Quick section navigation" className="mt-7 flex flex-wrap items-center justify-center gap-2">
           <button
             type="button"
             onClick={() => scrollTo('single-uuid-section')}
+            aria-label="Scroll to Single UUID Generator"
             className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/60 px-3.5 py-2 text-xs font-semibold text-slate-300 backdrop-blur-md transition-all hover:border-indigo-500/50 hover:bg-slate-800 hover:text-white"
           >
-            <Sparkles className="h-3.5 w-3.5 text-indigo-400" />
+            <Sparkles aria-hidden="true" className="h-3.5 w-3.5 text-indigo-400" />
             <span>Single Generator</span>
           </button>
 
           <button
             type="button"
             onClick={() => scrollTo('bulk-uuid-section')}
+            aria-label="Scroll to Bulk UUID Generator"
             className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/60 px-3.5 py-2 text-xs font-semibold text-slate-300 backdrop-blur-md transition-all hover:border-indigo-500/50 hover:bg-slate-800 hover:text-white"
           >
-            <Layers className="h-3.5 w-3.5 text-purple-400" />
+            <Layers aria-hidden="true" className="h-3.5 w-3.5 text-purple-400" />
             <span>Bulk Generator</span>
           </button>
 
           <button
             type="button"
             onClick={() => scrollTo('inspector-section')}
+            aria-label="Scroll to UUID Validator & Decoder"
             className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/60 px-3.5 py-2 text-xs font-semibold text-slate-300 backdrop-blur-md transition-all hover:border-indigo-500/50 hover:bg-slate-800 hover:text-white"
           >
-            <SearchCode className="h-3.5 w-3.5 text-cyan-400" />
+            <SearchCode aria-hidden="true" className="h-3.5 w-3.5 text-cyan-400" />
             <span>Validator & Decoder</span>
           </button>
 
           <button
             type="button"
             onClick={() => scrollTo('specs-section')}
+            aria-label="Scroll to Specifications & FAQ"
             className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/60 px-3.5 py-2 text-xs font-semibold text-slate-300 backdrop-blur-md transition-all hover:border-indigo-500/50 hover:bg-slate-800 hover:text-white"
           >
-            <BookOpen className="h-3.5 w-3.5 text-amber-400" />
+            <BookOpen aria-hidden="true" className="h-3.5 w-3.5 text-amber-400" />
             <span>Specifications & FAQ</span>
           </button>
-        </div>
+        </nav>
       </header>
 
       {/* 1. Single UUID Generator */}

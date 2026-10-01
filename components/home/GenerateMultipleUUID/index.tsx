@@ -203,13 +203,17 @@ const GenerateMultipleUUID: FC = () => {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* Version Selector */}
           <div>
-            <label className="text-xs font-semibold tracking-wider text-slate-400 uppercase">UUID Version</label>
-            <div className="mt-2 grid grid-cols-3 gap-2">
+            <span id="bulk-version-label" className="text-xs font-semibold tracking-wider text-slate-400 uppercase">
+              UUID Version
+            </span>
+            <div role="group" aria-labelledby="bulk-version-label" className="mt-2 grid grid-cols-3 gap-2">
               {VERSION_OPTIONS.map((ver) => (
                 <button
                   key={ver.id}
                   id={`btn-bulk-version-${ver.id}`}
                   type="button"
+                  aria-pressed={selectedVersion === ver.id}
+                  aria-label={ver.label}
                   onClick={() => setSelectedVersion(ver.id)}
                   className={`cursor-pointer rounded-xl border p-2.5 text-center text-xs font-semibold transition ${
                     selectedVersion === ver.id
@@ -233,12 +237,14 @@ const GenerateMultipleUUID: FC = () => {
             </div>
 
             <div className="mt-2 flex items-center gap-2">
-              <div className="flex items-center gap-1">
+              <div role="group" aria-label="Preset quantities" className="flex items-center gap-1">
                 {PRESET_COUNTS.map((preset) => (
                   <button
                     key={preset}
                     id={`btn-preset-${preset}`}
                     type="button"
+                    aria-pressed={count === preset}
+                    aria-label={`Generate ${preset} UUIDs`}
                     onClick={() => setCount(preset)}
                     className={`cursor-pointer rounded-lg border px-2.5 py-1.5 font-mono text-xs font-semibold transition ${
                       count === preset
@@ -259,6 +265,7 @@ const GenerateMultipleUUID: FC = () => {
                 value={count || ''}
                 onChange={(e) => setCount(Math.min(500, Math.max(1, Number(e.target.value))))}
                 placeholder="Count"
+                aria-label="Quantity of UUIDs to generate (between 1 and 500)"
                 className="w-20 rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-1.5 text-center font-mono text-sm font-bold text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
               />
             </div>
@@ -268,18 +275,30 @@ const GenerateMultipleUUID: FC = () => {
         {/* Formatting Options Bar */}
         <div className="rounded-xl border border-slate-800/70 bg-slate-900/50 p-4">
           <div className="flex items-center gap-2 text-xs font-semibold tracking-wider text-slate-400 uppercase">
-            <SlidersHorizontal className="h-3.5 w-3.5 text-indigo-400" />
-            <span>Output Format</span>
+            <SlidersHorizontal aria-hidden="true" className="h-3.5 w-3.5 text-indigo-400" />
+            <span id="bulk-format-options-title">Output Format</span>
           </div>
 
-          <div className="mt-3 flex flex-wrap items-center gap-4 sm:gap-6">
+          <div
+            role="group"
+            aria-labelledby="bulk-format-options-title"
+            className="mt-3 flex flex-wrap items-center gap-4 sm:gap-6"
+          >
             {/* Hyphens */}
             <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-300">Hyphens:</span>
-              <div className="inline-flex rounded-lg border border-slate-800 bg-slate-950 p-0.5">
+              <span id="hyphen-label-bulk" className="text-xs text-slate-300">
+                Hyphens:
+              </span>
+              <div
+                role="group"
+                aria-labelledby="hyphen-label-bulk"
+                className="inline-flex rounded-lg border border-slate-800 bg-slate-950 p-0.5"
+              >
                 <button
                   type="button"
                   onClick={() => setHasHyphens(true)}
+                  aria-pressed={hasHyphens}
+                  aria-label="Include hyphens in bulk UUIDs"
                   className={`cursor-pointer rounded-md px-2.5 py-1 text-xs font-medium transition ${
                     hasHyphens ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-200'
                   }`}
@@ -289,6 +308,8 @@ const GenerateMultipleUUID: FC = () => {
                 <button
                   type="button"
                   onClick={() => setHasHyphens(false)}
+                  aria-pressed={!hasHyphens}
+                  aria-label="Remove hyphens from bulk UUIDs"
                   className={`cursor-pointer rounded-md px-2.5 py-1 text-xs font-medium transition ${
                     !hasHyphens ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-200'
                   }`}
@@ -300,11 +321,19 @@ const GenerateMultipleUUID: FC = () => {
 
             {/* Casing */}
             <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-300">Casing:</span>
-              <div className="inline-flex rounded-lg border border-slate-800 bg-slate-950 p-0.5">
+              <span id="casing-label-bulk" className="text-xs text-slate-300">
+                Casing:
+              </span>
+              <div
+                role="group"
+                aria-labelledby="casing-label-bulk"
+                className="inline-flex rounded-lg border border-slate-800 bg-slate-950 p-0.5"
+              >
                 <button
                   type="button"
                   onClick={() => setCaseType('lower')}
+                  aria-pressed={caseType === 'lower'}
+                  aria-label="Lowercase format"
                   className={`cursor-pointer rounded-md px-2.5 py-1 text-xs font-medium transition ${
                     caseType === 'lower' ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-200'
                   }`}
@@ -314,6 +343,8 @@ const GenerateMultipleUUID: FC = () => {
                 <button
                   type="button"
                   onClick={() => setCaseType('upper')}
+                  aria-pressed={caseType === 'upper'}
+                  aria-label="Uppercase format"
                   className={`cursor-pointer rounded-md px-2.5 py-1 text-xs font-medium transition ${
                     caseType === 'upper' ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-200'
                   }`}
@@ -325,13 +356,21 @@ const GenerateMultipleUUID: FC = () => {
 
             {/* Enclosure */}
             <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-300">Enclosure:</span>
-              <div className="flex flex-wrap items-center gap-1">
+              <span id="enclosure-label-bulk" className="text-xs text-slate-300">
+                Enclosure:
+              </span>
+              <div
+                role="group"
+                aria-labelledby="enclosure-label-bulk"
+                className="flex flex-wrap items-center gap-1"
+              >
                 {ENCLOSURE_OPTIONS.map((enc) => (
                   <button
                     key={enc.id}
                     type="button"
                     onClick={() => setEnclosure(enc.id)}
+                    aria-pressed={enclosure === enc.id}
+                    aria-label={`Enclosure format: ${enc.label}`}
                     className={`cursor-pointer rounded-lg border px-2 py-1 text-xs font-medium transition ${
                       enclosure === enc.id
                         ? 'border-indigo-500/80 bg-indigo-500/20 text-indigo-200'
@@ -351,9 +390,10 @@ const GenerateMultipleUUID: FC = () => {
           <button
             id="btn-generate-bulk-uuids"
             type="submit"
+            aria-label={`Generate ${count} ${selectedVersion.toUpperCase()} UUIDs`}
             className="flex w-full cursor-pointer items-center justify-center gap-2.5 rounded-2xl bg-indigo-600 py-3.5 text-base font-bold text-white shadow-lg shadow-indigo-600/25 transition-all duration-200 hover:bg-indigo-500 hover:shadow-indigo-500/35 active:scale-99"
           >
-            <Sparkles className="h-5 w-5" />
+            <Sparkles aria-hidden="true" className="h-5 w-5" />
             <span>
               Generate {count} {selectedVersion.toUpperCase()} UUIDs
             </span>
@@ -382,13 +422,15 @@ const GenerateMultipleUUID: FC = () => {
             <div className="flex flex-wrap items-center gap-2">
               {/* Search box */}
               <div className="relative">
-                <Search className="pointer-events-none absolute top-1/2 left-3 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
+                <Search aria-hidden="true" className="pointer-events-none absolute top-1/2 left-3 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
                 <input
+                  id="filter-uuids-input"
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Filter UUIDs..."
-                  className="rounded-xl border border-slate-700 bg-slate-950/80 py-1.5 pr-3 pl-8 text-xs text-slate-200 placeholder:text-slate-500 focus:border-indigo-500 focus:outline-none"
+                  aria-label="Filter generated UUIDs list"
+                  className="rounded-xl border border-slate-700 bg-slate-950/80 py-1.5 pr-3 pl-8 text-xs text-slate-200 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none"
                 />
               </div>
 
@@ -397,13 +439,14 @@ const GenerateMultipleUUID: FC = () => {
                 id="btn-copy-all-uuids"
                 type="button"
                 onClick={handleCopyAll}
+                aria-label={copiedAll ? 'All UUIDs copied to clipboard' : 'Copy all UUIDs to clipboard'}
                 className={`flex cursor-pointer items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs font-semibold shadow-sm transition ${
                   copiedAll
                     ? 'border-emerald-500/50 bg-emerald-500/20 text-emerald-300'
                     : 'border-slate-700 bg-slate-800/90 text-slate-200 hover:border-slate-600 hover:bg-slate-700'
                 }`}
               >
-                {copiedAll ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                {copiedAll ? <Check aria-hidden="true" className="h-3.5 w-3.5" /> : <Copy aria-hidden="true" className="h-3.5 w-3.5" />}
                 <span>{copiedAll ? 'Copied!' : 'Copy All'}</span>
               </button>
 
@@ -412,10 +455,11 @@ const GenerateMultipleUUID: FC = () => {
                 id="btn-download-txt"
                 type="button"
                 onClick={handleDownloadTxt}
+                aria-label="Download generated UUIDs as TXT file"
                 title="Download as .txt"
                 className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/80 px-2.5 py-1.5 text-xs font-medium text-slate-300 transition hover:border-slate-700 hover:bg-slate-800"
               >
-                <Download className="h-3.5 w-3.5 text-indigo-400" />
+                <Download aria-hidden="true" className="h-3.5 w-3.5 text-indigo-400" />
                 <span>TXT</span>
               </button>
 
@@ -424,10 +468,11 @@ const GenerateMultipleUUID: FC = () => {
                 id="btn-download-json"
                 type="button"
                 onClick={handleDownloadJson}
+                aria-label="Download generated UUIDs as JSON file"
                 title="Download as JSON array"
                 className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/80 px-2.5 py-1.5 text-xs font-medium text-slate-300 transition hover:border-slate-700 hover:bg-slate-800"
               >
-                <FileCode className="h-3.5 w-3.5 text-cyan-400" />
+                <FileCode aria-hidden="true" className="h-3.5 w-3.5 text-cyan-400" />
                 <span>JSON</span>
               </button>
 
@@ -436,10 +481,11 @@ const GenerateMultipleUUID: FC = () => {
                 id="btn-download-csv"
                 type="button"
                 onClick={handleDownloadCsv}
+                aria-label="Download generated UUIDs as CSV file"
                 title="Download as CSV"
                 className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/80 px-2.5 py-1.5 text-xs font-medium text-slate-300 transition hover:border-slate-700 hover:bg-slate-800"
               >
-                <FileSpreadsheet className="h-3.5 w-3.5 text-emerald-400" />
+                <FileSpreadsheet aria-hidden="true" className="h-3.5 w-3.5 text-emerald-400" />
                 <span>CSV</span>
               </button>
 
@@ -448,10 +494,11 @@ const GenerateMultipleUUID: FC = () => {
                 id="btn-clear-uuids"
                 type="button"
                 onClick={handleClear}
+                aria-label="Clear all generated UUIDs"
                 title="Clear list"
                 className="flex cursor-pointer items-center gap-1 rounded-xl border border-rose-500/20 bg-rose-500/10 px-2.5 py-1.5 text-xs font-medium text-rose-300 transition hover:bg-rose-500/20"
               >
-                <Trash2 className="h-3.5 w-3.5" />
+                <Trash2 aria-hidden="true" className="h-3.5 w-3.5" />
                 <span>Clear</span>
               </button>
             </div>

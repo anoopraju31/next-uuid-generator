@@ -59,9 +59,10 @@ const UuidInspector: FC = () => {
           <button
             type="button"
             onClick={handlePaste}
+            aria-label="Paste UUID from clipboard"
             className="flex cursor-pointer items-center gap-1 text-xs font-medium text-indigo-400 transition hover:text-indigo-300"
           >
-            <ClipboardPaste className="h-3.5 w-3.5" />
+            <ClipboardPaste aria-hidden="true" className="h-3.5 w-3.5" />
             <span>Paste from clipboard</span>
           </button>
         </div>
@@ -73,19 +74,21 @@ const UuidInspector: FC = () => {
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
             placeholder="e.g. 018f6f59-7f52-70b9-9e8c-8f92bd33e210 or {a8098c1a-...}"
-            className="w-full rounded-2xl border border-slate-700/80 bg-slate-950/80 px-4 py-3.5 font-mono text-base text-slate-100 placeholder:text-slate-600 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
+            aria-label="UUID or GUID string to inspect and validate"
+            className="w-full rounded-2xl border border-slate-700/80 bg-slate-950/80 px-4 py-3.5 font-mono text-base text-slate-100 placeholder:text-slate-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
           />
         </div>
 
         {/* Quick sample chips */}
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs text-slate-500">Quick test:</span>
+        <div role="group" aria-label="Quick test sample UUIDs" className="flex flex-wrap items-center gap-2">
+          <span className="text-xs text-slate-400">Quick test:</span>
           {SAMPLE_UUIDS.map((sample) => (
             <button
               key={sample.label}
               type="button"
+              aria-label={`Test with ${sample.label}: ${sample.val}`}
               onClick={() => setInputVal(sample.val)}
-              className="cursor-pointer rounded-lg border border-slate-800 bg-slate-950/60 px-2.5 py-1 text-xs text-slate-400 transition hover:border-slate-700 hover:text-slate-200"
+              className="cursor-pointer rounded-lg border border-slate-800 bg-slate-950/60 px-2.5 py-1 text-xs text-slate-300 transition hover:border-slate-700 hover:text-white"
             >
               {sample.label}
             </button>
@@ -95,18 +98,18 @@ const UuidInspector: FC = () => {
 
       {/* Diagnostic results */}
       {inputVal.trim() && (
-        <div className="mt-6 rounded-2xl border border-slate-800/80 bg-slate-950/70 p-5">
+        <div aria-live="polite" className="mt-6 rounded-2xl border border-slate-800/80 bg-slate-950/70 p-5">
           {/* Validity status badge */}
           <div className="border-slate-850 flex items-center justify-between border-b pb-4">
             <div className="flex items-center gap-2.5">
               {result.isValid ? (
                 <>
-                  <CheckCircle2 className="h-5 w-5 text-emerald-400" />
+                  <CheckCircle2 aria-hidden="true" className="h-5 w-5 text-emerald-400" />
                   <span className="font-semibold text-emerald-300">Valid RFC Compliant UUID</span>
                 </>
               ) : (
                 <>
-                  <XCircle className="h-5 w-5 text-rose-400" />
+                  <XCircle aria-hidden="true" className="h-5 w-5 text-rose-400" />
                   <span className="font-semibold text-rose-300">Invalid UUID Format</span>
                 </>
               )}
@@ -122,25 +125,25 @@ const UuidInspector: FC = () => {
           {result.isValid ? (
             <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               <div className="border-slate-850 rounded-xl border bg-slate-900/40 p-3.5">
-                <span className="text-[11px] font-medium tracking-wider text-slate-500 uppercase">Version</span>
+                <span className="text-[11px] font-medium tracking-wider text-slate-400 uppercase">Version</span>
                 <p className="mt-1 text-sm font-semibold text-slate-200">{result.versionName}</p>
                 <p className="mt-1 text-xs text-slate-400">{result.explanation}</p>
               </div>
 
               <div className="border-slate-850 rounded-xl border bg-slate-900/40 p-3.5">
-                <span className="text-[11px] font-medium tracking-wider text-slate-500 uppercase">Variant Spec</span>
+                <span className="text-[11px] font-medium tracking-wider text-slate-400 uppercase">Variant Spec</span>
                 <p className="mt-1 text-sm font-semibold text-slate-200">{result.variant}</p>
                 <p className="mt-1 text-xs text-slate-400">Determines the layout and interpretation of the bits.</p>
               </div>
 
               <div className="border-slate-850 rounded-xl border bg-slate-900/40 p-3.5">
-                <span className="text-[11px] font-medium tracking-wider text-slate-500 uppercase">
+                <span className="text-[11px] font-medium tracking-wider text-slate-400 uppercase">
                   Embedded Timestamp
                 </span>
                 {result.decodedTimestamp ? (
                   <>
                     <div className="mt-1 flex items-center gap-1.5 text-sm font-semibold text-cyan-300">
-                      <Clock className="h-4 w-4" />
+                      <Clock aria-hidden="true" className="h-4 w-4" />
                       <span>{result.relativeTime || 'Decoded'}</span>
                     </div>
                     <p className="mt-1 font-mono text-xs text-slate-300">{result.decodedTimestamp}</p>

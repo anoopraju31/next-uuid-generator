@@ -23,7 +23,8 @@ const Footer: FC = () => {
           <a
             href="https://anoopraju.xyz/"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            aria-label="Anoop Raju's website (opens in a new tab)"
             className="font-medium text-slate-200 transition-colors hover:text-indigo-400 hover:underline"
           >
             Anoop Raju

@@ -24,7 +24,12 @@ const UuidContainer: FC<Props> = ({ uuids, copiedIndices, handleCopy, filteredIn
 
   return (
     <div className="w-full">
-      <div className="max-h-150 overflow-y-auto pr-1">
+      <div
+        tabIndex={0}
+        role="region"
+        aria-label="Generated UUIDs list"
+        className="max-h-150 overflow-y-auto pr-1 focus:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500 rounded-xl"
+      >
         <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
           {displayIndices.map((origIndex) => {
             const uuid = uuids[origIndex];
@@ -36,17 +41,26 @@ const UuidContainer: FC<Props> = ({ uuids, copiedIndices, handleCopy, filteredIn
                 className="group hover:bg-slate-850 relative flex items-center justify-between gap-2 rounded-xl border border-slate-800/80 bg-slate-900/60 p-3 shadow-sm transition-all duration-150 hover:border-indigo-500/40"
               >
                 {/* Index badge */}
-                <div className="flex shrink-0 items-center gap-1 font-mono text-[11px] font-semibold text-slate-500">
-                  <span className="flex h-5 w-5 items-center justify-center rounded bg-slate-800 text-[10px] text-slate-400">
+                <div className="flex shrink-0 items-center gap-1 font-mono text-[11px] font-semibold text-slate-400">
+                  <span className="flex h-5 w-5 items-center justify-center rounded bg-slate-800 text-[10px] text-slate-300">
                     {origIndex + 1}
                   </span>
                 </div>
 
                 {/* UUID Value */}
                 <div
+                  role="button"
+                  tabIndex={0}
                   onClick={() => handleCopy(origIndex)}
-                  title="Click to copy"
-                  className="flex-1 cursor-pointer truncate font-mono text-xs font-medium text-slate-200 transition-colors select-all group-hover:text-indigo-200"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handleCopy(origIndex);
+                    }
+                  }}
+                  aria-label={`UUID #${origIndex + 1}: ${uuid}. Click or press Enter to copy`}
+                  title="Click or press Enter to copy"
+                  className="flex-1 cursor-pointer truncate font-mono text-xs font-medium text-slate-200 transition-colors select-all group-hover:text-indigo-200 focus:outline-none focus-visible:ring-1 focus-visible:ring-indigo-400"
                 >
                   {uuid}
                 </div>
@@ -56,14 +70,19 @@ const UuidContainer: FC<Props> = ({ uuids, copiedIndices, handleCopy, filteredIn
                   id={`btn-copy-item-${origIndex}`}
                   type="button"
                   onClick={() => handleCopy(origIndex)}
-                  title="Copy UUID"
+                  aria-label={isCopied ? `UUID #${origIndex + 1} copied` : `Copy UUID #${origIndex + 1} to clipboard`}
+                  title={`Copy UUID #${origIndex + 1}`}
                   className={`flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-lg border transition-all duration-150 ${
                     isCopied
                       ? 'border-emerald-500/50 bg-emerald-500/20 text-emerald-300'
                       : 'border-slate-800 bg-slate-800/80 text-slate-400 hover:border-slate-700 hover:bg-slate-700 hover:text-white'
                   }`}
                 >
-                  {isCopied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                  {isCopied ? (
+                    <Check aria-hidden="true" className="h-3.5 w-3.5" />
+                  ) : (
+                    <Copy aria-hidden="true" className="h-3.5 w-3.5" />
+                  )}
                 </button>
               </div>
             );
