@@ -139,11 +139,13 @@ export const inspectUuid = (input: string): UuidInspectionResult => {
   if (ver === 4) {
     versionName = 'Version 4 (Random)';
     entropyBits = 122;
-    explanation = 'Generated using 122 cryptographically secure pseudo-random bits. Uniqueness probability is 1 in 5.3 × 10³⁶.';
+    explanation =
+      'Generated using 122 cryptographically secure pseudo-random bits. Uniqueness probability is 1 in 5.3 × 10³⁶.';
   } else if (ver === 7) {
     versionName = 'Version 7 (Unix Epoch Time-ordered)';
     entropyBits = 74;
-    explanation = 'Combines a 48-bit Unix timestamp with 74 random bits. Ideal for database primary keys with B-Tree indexes.';
+    explanation =
+      'Combines a 48-bit Unix timestamp with 74 random bits. Ideal for database primary keys with B-Tree indexes.';
 
     try {
       const hexTime = normalized.replace(/-/g, '').slice(0, 12);

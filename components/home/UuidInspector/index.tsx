@@ -2,13 +2,7 @@
 
 import { useState, type FC } from 'react';
 import { toast } from 'sonner';
-import {
-  SearchCode,
-  CheckCircle2,
-  XCircle,
-  Clock,
-  ClipboardPaste,
-} from 'lucide-react';
+import { SearchCode, CheckCircle2, XCircle, Clock, ClipboardPaste } from 'lucide-react';
 
 import { inspectUuid, type UuidInspectionResult } from '../utils';
 
@@ -45,13 +39,9 @@ const UuidInspector: FC = () => {
         <div>
           <div className="flex items-center gap-2">
             <SearchCode className="h-4 w-4 text-cyan-400" />
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-              Live Diagnostic Tool
-            </span>
+            <span className="text-xs font-semibold tracking-wider text-slate-400 uppercase">Live Diagnostic Tool</span>
           </div>
-          <h2 className="mt-1 text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            UUID Validator & Decoder
-          </h2>
+          <h2 className="mt-1 text-2xl font-bold tracking-tight text-white sm:text-3xl">UUID Validator & Decoder</h2>
         </div>
 
         <span className="text-xs text-slate-400">Analyze version, variant & timestamps</span>
@@ -60,13 +50,16 @@ const UuidInspector: FC = () => {
       {/* Input container */}
       <div className="mt-6 flex flex-col gap-3">
         <div className="flex items-center justify-between">
-          <label htmlFor="uuid-inspector-input" className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <label
+            htmlFor="uuid-inspector-input"
+            className="text-xs font-semibold tracking-wider text-slate-400 uppercase"
+          >
             Paste any UUID / GUID string
           </label>
           <button
             type="button"
             onClick={handlePaste}
-            className="flex items-center gap-1 text-xs font-medium text-indigo-400 hover:text-indigo-300 transition cursor-pointer"
+            className="flex cursor-pointer items-center gap-1 text-xs font-medium text-indigo-400 transition hover:text-indigo-300"
           >
             <ClipboardPaste className="h-3.5 w-3.5" />
             <span>Paste from clipboard</span>
@@ -80,7 +73,7 @@ const UuidInspector: FC = () => {
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
             placeholder="e.g. 018f6f59-7f52-70b9-9e8c-8f92bd33e210 or {a8098c1a-...}"
-            className="w-full rounded-2xl border border-slate-700/80 bg-slate-950/80 px-4 py-3.5 font-mono text-base text-slate-100 placeholder:text-slate-600 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="w-full rounded-2xl border border-slate-700/80 bg-slate-950/80 px-4 py-3.5 font-mono text-base text-slate-100 placeholder:text-slate-600 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
           />
         </div>
 
@@ -92,7 +85,7 @@ const UuidInspector: FC = () => {
               key={sample.label}
               type="button"
               onClick={() => setInputVal(sample.val)}
-              className="rounded-lg border border-slate-800 bg-slate-950/60 px-2.5 py-1 text-xs text-slate-400 hover:border-slate-700 hover:text-slate-200 transition cursor-pointer"
+              className="cursor-pointer rounded-lg border border-slate-800 bg-slate-950/60 px-2.5 py-1 text-xs text-slate-400 transition hover:border-slate-700 hover:text-slate-200"
             >
               {sample.label}
             </button>
@@ -104,7 +97,7 @@ const UuidInspector: FC = () => {
       {inputVal.trim() && (
         <div className="mt-6 rounded-2xl border border-slate-800/80 bg-slate-950/70 p-5">
           {/* Validity status badge */}
-          <div className="flex items-center justify-between border-b border-slate-850 pb-4">
+          <div className="border-slate-850 flex items-center justify-between border-b pb-4">
             <div className="flex items-center gap-2.5">
               {result.isValid ? (
                 <>
@@ -128,31 +121,25 @@ const UuidInspector: FC = () => {
 
           {result.isValid ? (
             <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="rounded-xl border border-slate-850 bg-slate-900/40 p-3.5">
-                <span className="text-[11px] font-medium uppercase tracking-wider text-slate-500">
-                  Version
-                </span>
-                <p className="mt-1 font-semibold text-slate-200 text-sm">{result.versionName}</p>
+              <div className="border-slate-850 rounded-xl border bg-slate-900/40 p-3.5">
+                <span className="text-[11px] font-medium tracking-wider text-slate-500 uppercase">Version</span>
+                <p className="mt-1 text-sm font-semibold text-slate-200">{result.versionName}</p>
                 <p className="mt-1 text-xs text-slate-400">{result.explanation}</p>
               </div>
 
-              <div className="rounded-xl border border-slate-850 bg-slate-900/40 p-3.5">
-                <span className="text-[11px] font-medium uppercase tracking-wider text-slate-500">
-                  Variant Spec
-                </span>
-                <p className="mt-1 font-semibold text-slate-200 text-sm">{result.variant}</p>
-                <p className="mt-1 text-xs text-slate-400">
-                  Determines the layout and interpretation of the bits.
-                </p>
+              <div className="border-slate-850 rounded-xl border bg-slate-900/40 p-3.5">
+                <span className="text-[11px] font-medium tracking-wider text-slate-500 uppercase">Variant Spec</span>
+                <p className="mt-1 text-sm font-semibold text-slate-200">{result.variant}</p>
+                <p className="mt-1 text-xs text-slate-400">Determines the layout and interpretation of the bits.</p>
               </div>
 
-              <div className="rounded-xl border border-slate-850 bg-slate-900/40 p-3.5">
-                <span className="text-[11px] font-medium uppercase tracking-wider text-slate-500">
+              <div className="border-slate-850 rounded-xl border bg-slate-900/40 p-3.5">
+                <span className="text-[11px] font-medium tracking-wider text-slate-500 uppercase">
                   Embedded Timestamp
                 </span>
                 {result.decodedTimestamp ? (
                   <>
-                    <div className="mt-1 flex items-center gap-1.5 font-semibold text-cyan-300 text-sm">
+                    <div className="mt-1 flex items-center gap-1.5 text-sm font-semibold text-cyan-300">
                       <Clock className="h-4 w-4" />
                       <span>{result.relativeTime || 'Decoded'}</span>
                     </div>

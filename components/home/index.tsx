@@ -1,12 +1,7 @@
 'use client';
 
 import { type FC } from 'react';
-import {
-  Sparkles,
-  Layers,
-  SearchCode,
-  BookOpen,
-} from 'lucide-react';
+import { Sparkles, Layers, SearchCode, BookOpen } from 'lucide-react';
 
 import GenerateSingleUUID from './GenerateSingleUUID';
 import GenerateMultipleUUID from './GenerateMultipleUUID';
@@ -27,7 +22,7 @@ const Home: FC = () => {
       <div className="pointer-events-none fixed inset-0 -z-20 overflow-hidden">
         <div className="absolute -top-40 left-1/2 h-125 w-200 -translate-x-1/2 rounded-full bg-linear-to-b from-indigo-600/15 via-purple-600/10 to-transparent blur-3xl" />
         <div className="absolute top-1/3 -left-32 h-100 w-125 rounded-full bg-blue-600/10 blur-3xl" />
-        <div className="absolute bottom-1/4 -right-32 h-112.5 w-137.5 rounded-full bg-indigo-500/10 blur-3xl" />
+        <div className="absolute -right-32 bottom-1/4 h-112.5 w-137.5 rounded-full bg-indigo-500/10 blur-3xl" />
       </div>
 
       {/* Top Hero Section */}
@@ -45,13 +40,16 @@ const Home: FC = () => {
 
         {/* Title */}
         <h1 className="mt-5 text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-          Online <span className="bg-linear-to-r from-indigo-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">UUID Generator</span>
+          Online{' '}
+          <span className="bg-linear-to-r from-indigo-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">
+            UUID Generator
+          </span>
         </h1>
 
         {/* Subtitle */}
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base md:text-lg">
-          Generate cryptographically strong Version 4 (random) and modern Version 7 (time-ordered) UUIDs
-          with zero latency. Customize casings, hyphens, bulk exports, and inspect timestamp metadata.
+          Generate cryptographically strong Version 4 (random) and modern Version 7 (time-ordered) UUIDs with zero
+          latency. Customize casings, hyphens, bulk exports, and inspect timestamp metadata.
         </p>
 
         {/* Quick Navigation Pills */}
@@ -59,7 +57,7 @@ const Home: FC = () => {
           <button
             type="button"
             onClick={() => scrollTo('single-uuid-section')}
-            className="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/60 px-3.5 py-2 text-xs font-semibold text-slate-300 backdrop-blur-md transition-all hover:border-indigo-500/50 hover:bg-slate-800 hover:text-white cursor-pointer"
+            className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/60 px-3.5 py-2 text-xs font-semibold text-slate-300 backdrop-blur-md transition-all hover:border-indigo-500/50 hover:bg-slate-800 hover:text-white"
           >
             <Sparkles className="h-3.5 w-3.5 text-indigo-400" />
             <span>Single Generator</span>
@@ -68,7 +66,7 @@ const Home: FC = () => {
           <button
             type="button"
             onClick={() => scrollTo('bulk-uuid-section')}
-            className="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/60 px-3.5 py-2 text-xs font-semibold text-slate-300 backdrop-blur-md transition-all hover:border-indigo-500/50 hover:bg-slate-800 hover:text-white cursor-pointer"
+            className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/60 px-3.5 py-2 text-xs font-semibold text-slate-300 backdrop-blur-md transition-all hover:border-indigo-500/50 hover:bg-slate-800 hover:text-white"
           >
             <Layers className="h-3.5 w-3.5 text-purple-400" />
             <span>Bulk Generator</span>
@@ -77,7 +75,7 @@ const Home: FC = () => {
           <button
             type="button"
             onClick={() => scrollTo('inspector-section')}
-            className="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/60 px-3.5 py-2 text-xs font-semibold text-slate-300 backdrop-blur-md transition-all hover:border-indigo-500/50 hover:bg-slate-800 hover:text-white cursor-pointer"
+            className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/60 px-3.5 py-2 text-xs font-semibold text-slate-300 backdrop-blur-md transition-all hover:border-indigo-500/50 hover:bg-slate-800 hover:text-white"
           >
             <SearchCode className="h-3.5 w-3.5 text-cyan-400" />
             <span>Validator & Decoder</span>
@@ -86,7 +84,7 @@ const Home: FC = () => {
           <button
             type="button"
             onClick={() => scrollTo('specs-section')}
-            className="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/60 px-3.5 py-2 text-xs font-semibold text-slate-300 backdrop-blur-md transition-all hover:border-indigo-500/50 hover:bg-slate-800 hover:text-white cursor-pointer"
+            className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/60 px-3.5 py-2 text-xs font-semibold text-slate-300 backdrop-blur-md transition-all hover:border-indigo-500/50 hover:bg-slate-800 hover:text-white"
           >
             <BookOpen className="h-3.5 w-3.5 text-amber-400" />
             <span>Specifications & FAQ</span>

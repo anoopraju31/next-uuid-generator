@@ -33,7 +33,7 @@ const UuidContainer: FC<Props> = ({ uuids, copiedIndices, handleCopy, filteredIn
             return (
               <div
                 key={`${origIndex}-${uuid}`}
-                className="group relative flex items-center justify-between gap-2 rounded-xl border border-slate-800/80 bg-slate-900/60 p-3 shadow-sm transition-all duration-150 hover:border-indigo-500/40 hover:bg-slate-850"
+                className="group hover:bg-slate-850 relative flex items-center justify-between gap-2 rounded-xl border border-slate-800/80 bg-slate-900/60 p-3 shadow-sm transition-all duration-150 hover:border-indigo-500/40"
               >
                 {/* Index badge */}
                 <div className="flex shrink-0 items-center gap-1 font-mono text-[11px] font-semibold text-slate-500">
@@ -46,7 +46,7 @@ const UuidContainer: FC<Props> = ({ uuids, copiedIndices, handleCopy, filteredIn
                 <div
                   onClick={() => handleCopy(origIndex)}
                   title="Click to copy"
-                  className="flex-1 cursor-pointer truncate font-mono text-xs font-medium text-slate-200 transition-colors group-hover:text-indigo-200 select-all"
+                  className="flex-1 cursor-pointer truncate font-mono text-xs font-medium text-slate-200 transition-colors select-all group-hover:text-indigo-200"
                 >
                   {uuid}
                 </div>

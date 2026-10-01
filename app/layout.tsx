@@ -20,7 +20,7 @@ type RootLayoutProps = Readonly<{
 const RootLayout: FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="en" className="dark">
-      <body className="min-h-screen bg-[#080a10] text-slate-100 antialiased selection:bg-indigo-500 selection:text-white flex flex-col justify-between">
+      <body className="flex min-h-screen flex-col justify-between bg-[#080a10] text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
         {children}
         <Footer />
         <Toaster position="bottom-right" richColors theme="dark" closeButton />
@@ -30,4 +30,3 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => {
 };
 
 export default RootLayout;
-
