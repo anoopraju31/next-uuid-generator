@@ -28,7 +28,7 @@ const UuidContainer: FC<Props> = ({ uuids, copiedIndices, handleCopy, filteredIn
         tabIndex={0}
         role="region"
         aria-label="Generated UUIDs list"
-        className="max-h-150 overflow-y-auto pr-1 focus:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500 rounded-xl"
+        className="max-h-150 overflow-y-auto rounded-xl pr-1 focus:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500"
       >
         <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
           {displayIndices.map((origIndex) => {

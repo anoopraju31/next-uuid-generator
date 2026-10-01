@@ -337,11 +337,7 @@ const GenerateSingleUUID: FC = () => {
             <span id="enclosure-label-single" className="text-xs text-slate-300">
               Enclosure:
             </span>
-            <div
-              role="group"
-              aria-labelledby="enclosure-label-single"
-              className="flex flex-wrap items-center gap-1"
-            >
+            <div role="group" aria-labelledby="enclosure-label-single" className="flex flex-wrap items-center gap-1">
               {ENCLOSURE_OPTIONS.map((enc) => (
                 <button
                   key={enc.id}

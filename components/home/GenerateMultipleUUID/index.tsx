@@ -359,11 +359,7 @@ const GenerateMultipleUUID: FC = () => {
               <span id="enclosure-label-bulk" className="text-xs text-slate-300">
                 Enclosure:
               </span>
-              <div
-                role="group"
-                aria-labelledby="enclosure-label-bulk"
-                className="flex flex-wrap items-center gap-1"
-              >
+              <div role="group" aria-labelledby="enclosure-label-bulk" className="flex flex-wrap items-center gap-1">
                 {ENCLOSURE_OPTIONS.map((enc) => (
                   <button
                     key={enc.id}
@@ -422,7 +418,10 @@ const GenerateMultipleUUID: FC = () => {
             <div className="flex flex-wrap items-center gap-2">
               {/* Search box */}
               <div className="relative">
-                <Search aria-hidden="true" className="pointer-events-none absolute top-1/2 left-3 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
+                <Search
+                  aria-hidden="true"
+                  className="pointer-events-none absolute top-1/2 left-3 h-3.5 w-3.5 -translate-y-1/2 text-slate-400"
+                />
                 <input
                   id="filter-uuids-input"
                   type="text"
@@ -446,7 +445,11 @@ const GenerateMultipleUUID: FC = () => {
                     : 'border-slate-700 bg-slate-800/90 text-slate-200 hover:border-slate-600 hover:bg-slate-700'
                 }`}
               >
-                {copiedAll ? <Check aria-hidden="true" className="h-3.5 w-3.5" /> : <Copy aria-hidden="true" className="h-3.5 w-3.5" />}
+                {copiedAll ? (
+                  <Check aria-hidden="true" className="h-3.5 w-3.5" />
+                ) : (
+                  <Copy aria-hidden="true" className="h-3.5 w-3.5" />
+                )}
                 <span>{copiedAll ? 'Copied!' : 'Copy All'}</span>
               </button>
 
