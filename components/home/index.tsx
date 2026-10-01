@@ -29,7 +29,7 @@ const Home: FC = () => {
       <div className="pointer-events-none fixed inset-0 -z-20 overflow-hidden">
         <div className="absolute -top-40 left-1/2 h-125 w-200 -translate-x-1/2 rounded-full bg-linear-to-b from-indigo-600/15 via-purple-600/10 to-transparent blur-3xl" />
         <div className="absolute top-1/3 -left-32 h-100 w-125 rounded-full bg-blue-600/10 blur-3xl" />
-        <div className="absolute bottom-1/4 -right-32 h-[450px] w-[550px] rounded-full bg-indigo-500/10 blur-3xl" />
+        <div className="absolute bottom-1/4 -right-32 h-112.5 w-137.5 rounded-full bg-indigo-500/10 blur-3xl" />
       </div>
 
       {/* Top Hero Section */}
